@@ -81,10 +81,6 @@ print('would you like to manually pick the detection color? Y/N')
 ans1 = input()
 wanted_color = pixelpick(ans1)
 
-print('SETUP_AUTOWALK')
-print('what direction would you like to autowalk? w/a/s/d')
-ans2 = input()
-
 print('MAIN_LOOP')
 
 print('press h to start the macro, if you would like to stop press k')
