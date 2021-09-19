@@ -21,13 +21,14 @@ import keyboard
 import time
 import random
 import win32api,win32con
-
+    
 tolr = 15
-tolg = 10
+tolgb = 10
 
 click_timelength = 7
-scan_timelength = 120
+scan_timelength = 69
 scan_amount = 3
+walkoffset = 0.5
 
 def click():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
@@ -41,12 +42,12 @@ def waitforkeypress(key):
 def pixelpick(ans):
     print(ans)
     if ans == 'N' or ans == 'n':
-        return [240,90,90] 
+        return [240,95,95] 
     elif ans == 'Y' or ans == 'y':
         print("press 'y' to choose the color for the detection pixel")
         waitforkeypress('y')
         xpos,ypos = win32api.GetCursorPos()
-        return pyautogui.pixel(xpos,ypos)
+        return pyautogui.pixel(xpos,ypos-2)
 
 print('SETUP_SCREENSHOT_AREA')
 
@@ -81,9 +82,8 @@ ans1 = input()
 wanted_color = pixelpick(ans1)
 
 print('SETUP_AUTOWALK')
-print('what direction would you like to autowalk? W/A/S/D/N')
+print('what direction would you like to autowalk? w/a/s/d')
 ans2 = input()
-walkoffset = 0.1
 
 print('MAIN_LOOP')
 
@@ -103,22 +103,26 @@ while 1:
                 
                     r,g,b = pic.getpixel((x,y))
                     if (r in range(wanted_color[0]-tolr,wanted_color[0]+tolr)):
-                        if (g in range(wanted_color[1]-tolg,wanted_color[1]+tolg)):
-                            pixelfound = True
-                            wanted_color = pyautogui.pixel(x+P1[0],y+P1[1])
-                            win32api.SetCursorPos((x+P1[0],y+P1[1]))
-                            print('pixel has been found!')
-                            break
+                        if (g in range(wanted_color[1]-tolgb,wanted_color[1]+tolgb)):
+                            if (b in range(wanted_color[2]-tolgb,wanted_color[2]+tolgb)):
+                                pixelfound = True
+                                print(wanted_color,pyautogui.pixel(x+P1[0],y+P1[1]))
+                                wanted_color = pyautogui.pixel(x+P1[0],y+P1[1])
+                                win32api.SetCursorPos((x+P1[0],y+P1[1]))
+                                print('pixel has been found!')
+                                break
                 
                 if pixelfound == True:
                     break
                 
             if pixelfound == True:
                 break
+            print('check '+str(n2))
             time.sleep(0.5)
             
         if pixelfound == True:
             break
+        print('restart')
         click()
         
     if pixelfound == True:
@@ -130,7 +134,4 @@ while 1:
     else:
         print('pixel wasnt found. terminating script')
         exit()
-    pyautogui.keydown(ans2)
-    time.sleep(walkoffset)
-    pyautogui.keyup(ans2)
     print('loop restarting')
