@@ -1,5 +1,5 @@
 """
-Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.1- Rb1 (CIPExM-Py3.9MV1.1-RB1)
+Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.2- Rb1 (CIPExM-Py3.9MV1.2-RB1)
 
 HOW TO SET UP MACRO
 
