@@ -1,3 +1,20 @@
+"""
+Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.1- Rb1 (CIPExM-Py3.9MV1.1-RB1)
+
+HOW TO SET UP MACRO
+
+firstly, download the latest version python onto your computer.
+
+secondly, go to command prompt and input the following commands:
+py -m pip install pywin32
+py -m pip install pillow
+py -m pip install pyautogui
+py -m pip install keyboard
+py -m pip install opencv-python
+
+thirdly, copy and paste the code below into a python file, then configure as needed.
+"""
+
 from pyautogui import *
 import pyautogui
 import keyboard
