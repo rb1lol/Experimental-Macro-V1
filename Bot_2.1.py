@@ -1,6 +1,8 @@
  """
 Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.3- Rb1 (CIPExM-Py3.9MV1.3-RB1)
 
+if need any help, or have any questions you can contact me in this discord: https://discord.gg/RBxF3gZtBN
+
 HOW TO SET UP MACRO
 
 firstly, download the latest version python onto your computer.
@@ -25,14 +27,16 @@ import random
 import win32api,win32con
 
 # tweakable values
-tolr = 15
-tolgb = 10
+tolr = 15 # tolerance for finding the red color value
+tolgb = 10 # tolerance for finding the other color values
 
-click_timelength = 7
-scan_timelength = 55
-scan_amount = 3
-step = 5
-afterclick = False
+click_timelength = 7 # approx. how long your character will click
+scan_timelength = 55 # how long each scan loop takes
+scan_amount = 3 # how many scan loops there are (clicks at the end of each loop to reset fishing pole)
+step = 5 # how large the pixel step is between pixels. lower for better accuracy, increase for more effeciency
+afterclick = False # clicks after the spamclick, useful in certain enviornments.
+
+CPS = 2 # checks per second (CPS) is how many times in a second the loop will scan for a pixel
 
 # functions
 def click():
@@ -100,18 +104,21 @@ print('press h to start the macro, if you would like to stop press k')
 waitforkeypress('h')
 print('loop started')
 
-# main loop (not going to explain it all)
+# main loop (not going to explain it all, look into it yourself)
 while 1:
     pixelfound = False
     for n1 in range(0,scan_amount):
-        for n2 in range(0,scan_timelength*2):
+        for n2 in range(0,scan_timelength*CPS):
             pic = pyautogui.screenshot(region=(P1[0],P1[1],wid,hei))
             for x in range(0,wid,step):
                 for y in range(0,hei,step):
                     if keyboard.is_pressed('k')==True:
                         exit()
-                
+                    
+                    # get the color of the pixel (x,y) from the screenshot
                     r,g,b = pic.getpixel((x,y))
+                    
+                    # checks if the color alligns with the wanted color
                     if (r in range(wanted_color[0]-tolr,wanted_color[0]+tolr)):
                         if (g in range(wanted_color[1]-tolgb,wanted_color[1]+tolgb)):
                             if (b in range(wanted_color[2]-tolgb,wanted_color[2]+tolgb)):
@@ -128,7 +135,7 @@ while 1:
             if pixelfound == True:
                 break
             print('check '+str(n2))
-            time.sleep(0.5)
+            time.sleep(1/CPS)
             
         if pixelfound == True:
             break
