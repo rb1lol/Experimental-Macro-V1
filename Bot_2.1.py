@@ -1,5 +1,5 @@
  """
-Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.2- Rb1 (CIPExM-Py3.9MV1.2-RB1)
+Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.3- Rb1 (CIPExM-Py3.9MV1.3-RB1)
 
 HOW TO SET UP MACRO
 
@@ -33,6 +33,7 @@ scan_timelength = 69
 scan_amount = 3
 walkoffset = 0.5
 step = 5
+afterclick = False
 
 # functions
 def click():
@@ -145,4 +146,7 @@ while 1:
         print('pixel wasnt found. terminating script')
         exit()
     
+    time.sleep(1)
+    if afterclick == True:
+        click()
     print('loop restarting')
