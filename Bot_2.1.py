@@ -29,9 +29,8 @@ tolr = 15
 tolgb = 10
 
 click_timelength = 7
-scan_timelength = 69
+scan_timelength = 55
 scan_amount = 3
-walkoffset = 0.5
 step = 5
 afterclick = False
 
