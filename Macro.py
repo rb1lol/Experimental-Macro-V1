@@ -160,6 +160,8 @@ while 1:
                     break
                 
             if pixelfound == True:
+                if n2 <= 5:
+                    print('pixel detected too fast! terminating script')
                 break
             print('scan loop #'+str(n2)) # prints after every scan loop
             time.sleep(1/CPS)
