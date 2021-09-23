@@ -35,8 +35,8 @@ import win32api,win32con
 tolr = 15 # tolerance for finding the red color value
 tolgb = 10 # tolerance for finding the other color values
 
-scan_timelength = 75 # how long each scan loop takes in seconds
-scan_amount = 5 # how many scan loops there are (clicks at the end of each loop to reset fishing pole)
+scan_timelength = 69 # how long each scan loop takes in seconds
+scan_amount = 3 # how many scan loops there are (clicks at the end of each loop to reset fishing pole)
 
 step = 5 # how large the pixel step is between pixels. lower for better accuracy, increase for more effeciency
 CPS = 2 # checks per second (CPS) is how many times in a second the loop will scan for a pixel
@@ -69,7 +69,7 @@ def pixelpick(ans):
         exit()
 
 def autowalk(ans):
-    AWTimer = 0.15 # how long your chara will auto walk in seconds, tweakable
+    AWTimer = 0.05 # how long your chara will auto walk in seconds, tweakable
     if ans !='n':
         keyDown(ans)
         time.sleep(AWTimer)
@@ -113,6 +113,7 @@ else:
 print('SETUP_DETECTION_COLOR')
 
 # get the detection color (auto-assigns if user inputs N)
+print('prereq: make sure to turn on picture mode (press p)')
 print('would you like to manually pick the detection color? Y/N')
 ans = input()
 wanted_color = pixelpick(ans)
