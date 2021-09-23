@@ -69,7 +69,7 @@ def pixelpick(ans):
         exit()
 
 def autowalk(ans):
-    AWTimer = 0.05 # how long your chara will auto walk in seconds, tweakable
+    AWTimer = 0.035 # how long your chara will auto walk in seconds, tweakable
     if ans !='n':
         keyDown(ans)
         time.sleep(AWTimer)
