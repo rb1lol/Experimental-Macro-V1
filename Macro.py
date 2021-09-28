@@ -1,5 +1,5 @@
 """
-Configurable Image to Pixel Experimental Macro - Python Version 3.9 Macro Version 1.4 - Rb1 (CIPExM-Py3.9MV1.4-RB1)
+Python Macro (PyM), Created and Developed by Rb1
 
 if need any help, or have any questions you can contact me in this discord: https://discord.gg/RBxF3gZtBN
 
